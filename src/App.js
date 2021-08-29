@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header/Header.jsx';
-import Content from './components/Content/Content.jsx';
 import Footer from './components/Footer/Footer';
+import Posts from './components/Posts/Posts.jsx';
 
 class App extends React.Component{
   render(){
@@ -33,7 +33,7 @@ class App extends React.Component{
     return(
       <div className='wrapper'>
         <Header Items={menuItems}/>
-        <Content/>
+        <Posts/>
         <Footer/>
       </div>
     )
