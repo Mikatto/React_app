@@ -1,8 +1,0 @@
-.posts_wrapper{
-    display: grid;
-    gap: 12px;
-    overflow: scroll;
-    background-color: #F3F4FA;
-    padding-top: 24px;
-    justify-content: center;
-}
