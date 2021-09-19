@@ -1,0 +1,44 @@
+.header{
+    display: grid;
+    grid-template-columns: min-content min-content;
+    border-bottom: 1px solid #f3f3f3;
+    gap: 24px;
+    padding: 0 24px 0 24px;
+}
+
+.header_menu{
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    gap: 12px;
+    margin: 0;
+}
+
+.header_menu__item{
+    line-height: 64px;
+    color: black;
+    text-decoration: none;
+    position: relative;
+}
+
+.header_menu__item:hover{
+    color: rgb(0, 89, 255);
+}
+
+.header_menu__item_active{
+    color: rgb(0, 89, 255);
+}
+
+.header_menu__item_active::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: rgb(0, 89, 255);
+}
+
+.logo{
+    width: 32px;
+    align-self: center;
+}

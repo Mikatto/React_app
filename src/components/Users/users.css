@@ -1,0 +1,20 @@
+.footer{
+    display: grid;
+    height: 24px;
+    align-content: center;
+    justify-content: center;
+    padding: 0 24px 0 24px;
+    background-color: #2b2b2b;
+}
+
+.footer_message{
+    font-size: 10px;
+    color: gray;
+}
+
+.main_list{
+    display: grid;
+    gap: 16px;
+    justify-content: center;
+    padding-bottom: 24px;
+}

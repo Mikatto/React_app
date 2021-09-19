@@ -1,0 +1,8 @@
+.album_list{
+    display: grid;
+    width: 750px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    justify-self: center;
+    padding-bottom: 24px;
+}

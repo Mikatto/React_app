@@ -1,43 +1,25 @@
-import {Component} from "react";
-import {fetchPopularRepos} from "./api/fetchPopularRepos";
-import RepoGrid from "./RepoGrid.js";
-import SelectedLang from "./SelectedLanguage.jsx";
+import { BrowserRouter as Router,Switch,Route } from 'react-router-dom';
+import './App.css';
+import Header from './components/Header/Header.jsx';
+import Footer from './components/Footer/Footer';
+import Dashboard from './components/Dashboard/Dashboard';
+import Users from './components/Users/Users';
+import Albums from './components/Albums/Albums';
+import Posts from './components/Posts/Posts.jsx';
 
-class App extends Component {
-    state = {
-        selectedLanguage: 'All',
-        repos: null
-    }
-
-    repoFetch(){
-      fetchPopularRepos(this.state.selectedLanguage)
-      .then(data => this.setState({ repos: data }));
-    }
-
-    componentDidMount() {
-        this.repoFetch();
-    }
-
-    selectLanguage = (event) => {
-        this.setState({ repos: null });
-        this.repoFetch();
-        if(event.target.innerText !== this.state.selectedLanguage) {
-            this.setState({selectedLanguage: event.target.innerText});
-        }
-    }
-
-    render() {
-        return (
-            <>
-            <SelectedLang select={this.selectLanguage}
-            selectLang={this.state.selectedLanguage}
-            repos={!!this.state.repos}/>
-                {this.state.repos ?
-                    <RepoGrid repos={this.state.repos} /> :
-                    <p style={{ textAlign: 'center'}}>Loading ...</p>}
-            </>
-        )
-    }
-}
+const App = () => (
+  <Router>
+      <div className='wrapper'>
+          <Header />
+          <Switch>
+              <Route exact path='/' component={Dashboard} />
+              <Route exact path='/users' component={Users} />
+              <Route exact path='/albums' component={Albums} />
+              <Route exact path='/posts' component={Posts} />
+          </Switch>
+          <Footer />
+      </div>
+  </Router>
+)
 
 export default App;
