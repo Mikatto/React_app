@@ -1,0 +1,26 @@
+.note__new{
+    display: grid;
+    grid-template-rows: 50% min-content;
+    align-content: space-between;
+    gap: 12px;
+}
+
+.note__input{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+   resize: none;
+   width: 100%;
+   box-sizing: border-box;
+   font-size: 14px;
+   border: 1px solid rgb(206, 206, 206);
+   border-radius: 4px;
+   padding: 10px;
+   transition: 1s ease;
+}
+
+.input__btns{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+}

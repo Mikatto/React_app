@@ -1,0 +1,11 @@
+.note{
+    padding: 20px 20px;
+    color:#000;
+    display: grid;
+    transition: 0.5s ease;
+    min-height: 200px;
+    border-radius: 12px;
+    border: 1px solid rgb(219, 219, 219) ;
+}
+
+
