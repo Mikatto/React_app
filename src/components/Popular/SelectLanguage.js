@@ -2,7 +2,8 @@ import {memo} from "react";
 import { useSelector,useDispatch } from 'react-redux';
 import { selectLanguageAction } from "../../redux/actions/app.actions";
 import { reposDataAction } from "../../redux/actions/app.actions";
-import {fetchPopularRepos} from "../../api/fetchPopularRepos";
+import { getPopRep } from '../../redux/thunk/app.fetchPopRep';
+
 
 const SelectLanguage = memo(() => {
 
@@ -11,8 +12,7 @@ const SelectLanguage = memo(() => {
     const changeLanguage=(e)=>{
             dispatch(selectLanguageAction(e));
             dispatch(reposDataAction(null));
-            fetchPopularRepos(e)
-            .then(data => dispatch(reposDataAction(data)));
+            dispatch(getPopRep(e))
     }
 
     const languages = ['All', 'Javascript', 'Ruby', 'Java', 'CSS', 'Python'];

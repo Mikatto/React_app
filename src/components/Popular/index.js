@@ -1,20 +1,20 @@
 import {Component} from "react";
-import {fetchPopularRepos} from "../../api/fetchPopularRepos";
 import SelectLanguage from "./SelectLanguage";
 import RepoGrid from "./RepoGrid";
 import {connect} from "react-redux";
-import { reposDataAction } from '../../redux/actions/app.actions';
+import { getPopRep } from '../../redux/thunk/app.fetchPopRep';
+
 
 const mapStateToProps = (state) => {
     return {
         language:state.languageReducer.selectedLanguage,
-        repos:state.repoReducer.repos
+        repos:state.popRepReducer,
     };
 }
 
 const mapDispatchToProps= (dispatch) => {
     return {
-        setRepo:(value)=>dispatch(reposDataAction(value))
+        setRepo:(value)=>dispatch(getPopRep(value)),
     };
 }
 
@@ -25,18 +25,31 @@ class Popular extends Component {
     }
 
     fetchPopularReposHandler = (text) => {
-        fetchPopularRepos(text)
-            .then(data => this.props.setRepo(data));
+        this.props.setRepo(text)
     }
 
     render() {
+        if (this.props.repos.loading) {
+            return (
+                <>
+                <SelectLanguage/>
+                <div>LOADING</div>
+                </>
+            )
+        }
+        if (this.props.repos.error) {
+            return (
+                <>
+            <SelectLanguage/>
+            <div>error{this.props.repos.error}</div>
+            </>
+            )
+        }
         return (
             <>
-                <span>{this.props.text}</span>
                 <SelectLanguage/>
-                {this.props.repos ?
-                    <RepoGrid/> :
-                    <p style={{ textAlign: 'center'}}>Loading ...</p>}
+                {this.props.repos.poprep ?
+                    <RepoGrid/> :null}
             </>
         )
     }

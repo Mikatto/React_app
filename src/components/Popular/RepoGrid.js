@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 
 const RepoGrid = () =>{ 
-    const {repos} = useSelector(state=>state.repoReducer);
+    const {poprep} = useSelector(state=>state.popRepReducer);
     return(
         <ul className='popular-list'>
-            {repos.map((repo, index) => {
+            {poprep.map((repo, index) => {
                 return (
                     <li key={repo.id} className='popular-item'>
                         <div className='popular-rank'>#{index + 1}</div>
