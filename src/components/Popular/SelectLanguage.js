@@ -3,7 +3,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import { selectLanguageAction } from "../../redux/actions/app.actions";
 import { reposDataAction } from "../../redux/actions/app.actions";
 import { getPopRep } from '../../redux/thunk/app.fetchPopRep';
-
+import { SlItem, SlList } from './RepoGrid.style';
 
 const SelectLanguage = memo(() => {
 
@@ -18,16 +18,15 @@ const SelectLanguage = memo(() => {
     const languages = ['All', 'Javascript', 'Ruby', 'Java', 'CSS', 'Python'];
 
     return (
-        <ul className='languages'>
+        <SlList>
             {languages.map((i, index) =>
-            
-                <li
+                <SlItem
                     key={index}
-                    style={{color: i === selectedLanguage ? '#d0021b' : '#000000'}}
+                    isSelectedLanguage={i===selectedLanguage}
                     onClick={(e)=>changeLanguage(e.target.innerText)}>
                     {i}
-                </li>)}
-        </ul>
+                </SlItem>)}
+        </SlList>
     )
 })
 

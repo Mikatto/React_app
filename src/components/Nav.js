@@ -1,17 +1,17 @@
-import {NavLink} from "react-router-dom";
+
+import {NavItem, NavWrapper} from './Nav.styles';
+
 
 const Nav = () => {
     const navLinks = ['Home', 'Popular', 'Battle'];
 
     return (
-        <ul className='nav'>
+        <NavWrapper>
             {navLinks.map((navLink, index) => (
-                    <li key={index}>
-                        <NavLink exact to={navLink === 'Home' ? '/' : navLink.toLowerCase()}>{navLink}</NavLink>
-                    </li>
+                        <NavItem exact to={navLink === 'Home' ? '/' : navLink.toLowerCase()} key={index}>{navLink}</NavItem>
                 )
             )}
-        </ul>
+        </NavWrapper>
     )
 }
 

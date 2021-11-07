@@ -1,4 +1,6 @@
 import {Component} from "react";
+import { Button, TextField } from '@mui/material';
+import { Box } from '@mui/system';
 
 class PlayerInput extends Component {
     state = {
@@ -16,17 +18,20 @@ class PlayerInput extends Component {
 
     render() {
         return (
-            <form className='column' onSubmit={this.handleSubmit}>
-                <label className='header' htmlFor="username">{this.props.label}</label>
-                <input
-                    type="text"
-                    id='username'
-                    placeholder='GitHub UserName'
-                    value={this.state.username}
-                    onChange={this.handleUserNameField}
-                    autoComplete='off'
-                />
-                <button className='button' type='submit' disabled={!this.state.username}>Submit</button>
+            <form  onSubmit={this.handleSubmit}>
+                <Box sx={{ display: 'grid', gridTemplateRows: 'repeat(2, 1fr)', gap: 1}}>
+                    <TextField
+                    sx={{ width:'100%'}}
+                        label={this.props.label}
+                        type="text"
+                        id='username'
+                        placeholder='GitHub UserName'
+                        value={this.state.username}
+                        onChange={this.handleUserNameField}
+                        autoComplete='off'
+                    />
+                    <Button variant="contained" color="success" type='submit' disabled={!this.state.username}>Submit</Button>
+                </Box>
             </form>
         )
     }

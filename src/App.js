@@ -7,10 +7,11 @@ import Home from './components/Home';
 import Popular from "./components/Popular";
 import Battle from './components/Battle';
 import Nav from "./components/Nav";
+import { Box } from '@mui/system';
 
 const App = () => (
             <Router>
-                <div className='container'>
+                <Box>
                     <Nav />
                     <Switch>
                         <Route exact path='/' component={Home} />
@@ -18,7 +19,7 @@ const App = () => (
                         <Route exact path='/battle' component={Battle} />
                         <Route exact path='/battle/results' component={Home} />
                     </Switch>
-                </div>
+                </Box >
             </Router>
         )
 

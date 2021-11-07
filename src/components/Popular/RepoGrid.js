@@ -1,28 +1,28 @@
 import { useSelector } from 'react-redux';
+import { Avatar, Grid } from '@mui/material';
+import { Card, CardRank, CardCount, CardOwner, CardLink } from './RepoGrid.style';
 
 const RepoGrid = () =>{ 
     const {poprep} = useSelector(state=>state.popRepReducer);
     return(
-        <ul className='popular-list'>
-            {poprep.map((repo, index) => {
-                return (
-                    <li key={repo.id} className='popular-item'>
-                        <div className='popular-rank'>#{index + 1}</div>
-                        <ul className='space-list-items'>
-                            <li>
-                                <img className='avatar' src={repo.owner.avatar_url} alt="Avatar" />
-                            </li>
-                            <li>
-                                <a href={repo.html_url} target='_blank' rel="noreferrer">{repo.name}</a>
-                            </li>
-                            <li>@{repo.owner.login}</li>
-                            <li>{repo.stargazers_count}</li>
-                        </ul>
-                    </li>
-                )
-            })
-            }
-        </ul>
+        <div className='main_wrapper'>
+            <Grid container spacing={{ xs: 2, md: 3 }}>
+                {poprep.map((repo, index) => {
+                    return (
+                        <Grid item xs={4}>
+                            <Card>
+                                <CardRank>#{index + 1}</CardRank>
+                                <CardOwner>@{repo.owner.login}</CardOwner>
+                                <Avatar sx={{width:'200px', height:'200px',borderRadius:'12px'}} src={repo.owner.avatar_url} alt="Avatar" />
+                                <CardCount>{repo.stargazers_count}</CardCount>
+                                <CardLink href={repo.html_url} target='_blank' rel="noreferrer">{repo.name}</CardLink>
+                            </Card>
+                        </Grid>
+                    )
+                })
+                }
+            </Grid>
+        </div>
 )}
 
 export default RepoGrid;

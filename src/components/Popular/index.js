@@ -3,6 +3,9 @@ import SelectLanguage from "./SelectLanguage";
 import RepoGrid from "./RepoGrid";
 import {connect} from "react-redux";
 import { getPopRep } from '../../redux/thunk/app.fetchPopRep';
+import { CircularProgress} from "@mui/material";
+import { Box } from '@mui/system';
+
 
 
 const mapStateToProps = (state) => {
@@ -32,8 +35,10 @@ class Popular extends Component {
         if (this.props.repos.loading) {
             return (
                 <>
-                <SelectLanguage/>
-                <div>LOADING</div>
+                    <SelectLanguage/>
+                    <Box sx={{display:'grid',justifyItems:'center',paddingTop:'200px'}}>
+                    <CircularProgress />
+                    </Box>
                 </>
             )
         }

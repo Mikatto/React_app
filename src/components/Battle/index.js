@@ -1,7 +1,9 @@
 import {Component} from "react";
-import {Link} from "react-router-dom";
+
 import PlayerInput from "./PlayerInput";
 import PlayerPreview from "./PlayerPreview";
+import { Box } from '@mui/system';
+import { Button } from '@mui/material';
 
 class Battle extends Component {
     state = {
@@ -29,37 +31,23 @@ class Battle extends Component {
     render() {
         const {playerOneName, playerTwoName, playerOneImage, playerTwoImage} = this.state;
         return (
-            <div>
-                <div className='row'>
+            <div className='main_wrapper'>
+                <Box sx={{ display: 'grid', gridTemplateColumns: '340px 340px',gap: 3 }}>
                     {!playerOneName ?
-                        <PlayerInput
-                            id='playerOne'
-                            label='Player One'
-                            onSubmit={this.submitHandler}
-                        /> :
-                        <PlayerPreview 
-                            avatar={playerOneImage}
-                            username={playerOneName}
-                        >
-                            <button className='reset' onClick={() => this.handleReset('playerOne')}>Reset</button>
+                        <PlayerInput id='playerOne' label='Player One' onSubmit={this.submitHandler}/> :
+                        <PlayerPreview  avatar={playerOneImage} username={playerOneName}>
+                            <Button variant="outlined" color="error" sx={{ width:'100%' }} onClick={() => this.handleReset('playerOne')}>Reset</Button>
                         </PlayerPreview>
                     }
                     {!playerTwoName ?
-                        <PlayerInput
-                            id='playerTwo'
-                            label='Player Two'
-                            onSubmit={this.submitHandler}
-                        /> :
-                        <PlayerPreview
-                            avatar={playerTwoImage}
-                            username={playerTwoName}
-                        >
-                            <button className='reset' onClick={() => this.handleReset('playerTwo')}>Reset</button>
+                        <PlayerInput id='playerTwo' label='Player Two' onSubmit={this.submitHandler}/> :
+                        <PlayerPreview avatar={playerTwoImage} username={playerTwoName}>
+                            <Button variant="outlined" color="error" sx={{ width:'100%' }} onClick={() => this.handleReset('playerTwo')}>Reset</Button>
                         </PlayerPreview>
                     }
-                </div>
+                </Box>
                 {playerOneImage && playerTwoImage &&
-                    <Link className='button' to='/battle/results'>Battle</Link>
+                <Button variant="contained" href='/battle/results' className='button' sx={{ width:'400px',height:'56px' }}>Battle Results</Button>
                 }
             </div>
         )

@@ -1,21 +1,11 @@
-import {Link} from "react-router-dom";
-import {appChangeTextAction} from "../../redux/actions/app.actions";
-import {useDispatch, useSelector} from 'react-redux';
+import { Button } from '@mui/material';
 
 const Home = () => {
-    const dispatch = useDispatch();
-    const {text} = useSelector(state => state.appReducer);
-    
-    const changeText = () => {
-        dispatch(appChangeTextAction('Goodbye'));
-    }
-    
+
     return (
-        <div className='home-container'>
+        <div className='main_wrapper'>
             <h1>Github Battle: battle your friends and ... stuff</h1>
-            <p>{text}</p>
-            <button className='button' onClick={changeText}>Change</button>
-            <Link to='/battle' className='button'>Battle</Link>
+            <Button variant="contained" href='/battle' className='button'>Battle</Button>
         </div>
     )
 }
